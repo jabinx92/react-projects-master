@@ -9,9 +9,8 @@ import logo from './logo.svg'
 import { FaTimes } from 'react-icons/fa'
 import { social, links } from './data'
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import Home from './Home'
+import Home from './Team'
 import Devices from './Devices'
-import RootComponent from './RootComponent'
 
 // Be sure to include styles at some point, probably during your bootstraping
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
@@ -36,7 +35,7 @@ const Sidebar = () => {
                     {links.map((link, index) => {
                       const {id, url, text, icon} = link;
                       return (
-                        <NavItem eventKey={text}>
+                        <NavItem key={id} eventKey={text}>
                         <NavIcon>
                             <i className={`fa fa-fw fa-${text}`} style={{ fontSize: '1.75em' }} />
                         </NavIcon>
@@ -53,10 +52,11 @@ const Sidebar = () => {
                 {links.map((link, index)=> {
                   const{id, url, text, icon, component} = link;
                   return (
-                    <Route path={url} component={props => component} />
+                    <Route key={id} path={url} component={() => component} />
                   )
                 })}
             </main>
+            <footer>hey here</footer>
         </React.Fragment>
     )}
     />

@@ -11,9 +11,9 @@ import {
   FaCalendarAlt,
   FaWpforms,
 } from 'react-icons/fa';
-import Home from './Home'
+import Team from './Team'
 import Devices from './Devices'
-import RootComponent from './RootComponent';
+import Home from './Home';
 
 export const links = [
   {
@@ -21,14 +21,14 @@ export const links = [
     url: '/',
     text: 'Home',
     icon: <FaHome />,
-    component: <RootComponent/>
+    component: <Home/>
   },
   {
     id: 2,
     url: '/team',
     text: 'Team',
     icon: <FaUserFriends />,
-    component: <Home/>
+    component: <Team/>
   },
   {
     id: 3,
