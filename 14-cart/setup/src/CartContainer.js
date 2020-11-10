@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CartItem from './CartItem'
 import { useGlobalContext } from './context'
 
 const CartContainer = () => {
   const { cart } = useGlobalContext()
+  const [cost, setCost] = useState(0);
+
+  function updateCost (price) {
+    setCost(price + cost)
+
+  }
   console.log(cart)
   if (cart.length === 0) {
     return (
@@ -25,7 +31,7 @@ const CartContainer = () => {
       {/* cart items */}
       <div>
         {cart.map((item) => {
-          return <CartItem key={item.id} {...item} />
+          return <CartItem key={item.id} {...item} updateCost={updateCost}/>
         })}
       </div>
       {/* cart footer */}
@@ -33,7 +39,7 @@ const CartContainer = () => {
         <hr />
         <div className='cart-total'>
           <h4>
-            total <span>$0.00</span>
+            total <span>${cost.toFixed(2)}</span>
           </h4>
         </div>
         <button
