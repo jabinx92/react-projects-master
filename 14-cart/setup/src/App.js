@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useGlobalContext } from './context'
 
 // components
@@ -7,6 +7,8 @@ import CartContainer from './CartContainer'
 // items
 
 function App() {
+
+  const [count, setCount] = useState(0)
   // if (loading) {
   //   return (
   //     <div className='loading'>

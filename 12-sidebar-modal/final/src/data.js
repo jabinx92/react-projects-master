@@ -11,7 +11,8 @@ import {
   FaCalendarAlt,
   FaWpforms,
 } from 'react-icons/fa';
-export const links = [
+
+const links = [
   {
     id: 1,
     url: '/',
@@ -44,7 +45,7 @@ export const links = [
   },
 ];
 
-export const social = [
+const social = [
   {
     id: 1,
     url: 'https://www.twitter.com',
@@ -71,3 +72,5 @@ export const social = [
     icon: <FaSketch />,
   },
 ];
+
+export  {links, social}
