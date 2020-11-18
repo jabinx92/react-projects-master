@@ -7,15 +7,16 @@ import CartContainer from './CartContainer'
 // items
 
 function App() {
+  const { loading } = useGlobalContext()
 
   const [count, setCount] = useState(0)
-  // if (loading) {
-  //   return (
-  //     <div className='loading'>
-  //       <h1>Loading...</h1>
-  //     </div>
-  //   )
-  // }
+  if (loading) {
+    return (
+      <div className='loading'>
+        <h1>Loading...</h1>
+      </div>
+    )
+  }
   return (
     <main>
       <Navbar />

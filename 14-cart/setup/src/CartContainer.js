@@ -4,20 +4,26 @@ import { useGlobalContext } from './context'
 
 const CartContainer = () => {
   const { cart } = useGlobalContext()
+  const [items, setItems] = useState(cart)
   let total = 0;
-  const mapped = cart.map(item => {
+  cart.map(item => {
    return total += item.price
   })
 
-  console.log(mapped)
   const [cost, setCost] = useState(0);
+  console.log(cart)
+  function removeItem (id) {
+    console.log('time to go')
+    const filtered = items.filter(item => {
+      return item.id !== id
+    })
+    setItems(filtered)
+  }
 
   function updateCost (price) {
     setCost(price + cost)
-
   }
-  console.log(cart)
-  if (cart.length === 0) {
+  if (items.length === 0) {
     return (
       <section className='cart'>
         {/* cart header */}
@@ -36,8 +42,8 @@ const CartContainer = () => {
       </header>
       {/* cart items */}
       <div>
-        {cart.map((item) => {
-          return <CartItem key={item.id} {...item} updateCost={updateCost}/>
+        {items.map((item) => {
+          return <CartItem key={item.id} {...item} updateCost={updateCost} removeItem={removeItem}/>
         })}
       </div>
       {/* cart footer */}

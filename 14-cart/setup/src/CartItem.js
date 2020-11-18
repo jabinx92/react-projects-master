@@ -1,9 +1,16 @@
 import React, {useState} from 'react'
 import { useGlobalContext } from './context'
-const CartItem = ({ id, img, title, price, amount, updateCost }) => {
+const CartItem = ({ id, img, title, price, amount, updateCost, removeItem }) => {
   const [count, setCount] = useState(amount);
 
   function changeCountAndCost  (number, price) {
+    if(number === 0) {
+      console.log(number)
+      console.log(id)
+      removeItem(id)
+
+    }
+
     setCount(number);
     updateCost(price);
   }
@@ -17,7 +24,7 @@ const CartItem = ({ id, img, title, price, amount, updateCost }) => {
         {/* remove button */}
         <button
           className='remove-btn'
-          onClick={() => console.log('remove item')}
+          onClick={() => removeItem(id)}
         >
           remove
         </button>
