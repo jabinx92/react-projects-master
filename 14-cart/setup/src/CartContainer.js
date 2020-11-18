@@ -4,6 +4,12 @@ import { useGlobalContext } from './context'
 
 const CartContainer = () => {
   const { cart } = useGlobalContext()
+  let total = 0;
+  const mapped = cart.map(item => {
+   return total += item.price
+  })
+
+  console.log(mapped)
   const [cost, setCost] = useState(0);
 
   function updateCost (price) {
@@ -39,7 +45,7 @@ const CartContainer = () => {
         <hr />
         <div className='cart-total'>
           <h4>
-            total <span>${cost.toFixed(2)}</span>
+            total <span>${(total + cost).toFixed(2)}</span>
           </h4>
         </div>
         <button
