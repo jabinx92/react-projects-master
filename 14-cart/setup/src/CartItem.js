@@ -44,4 +44,5 @@ const CartItem = ({ id, img, title, price, amount, updateCost }) => {
 
 export default CartItem
 
-//test  
+
+//baz
