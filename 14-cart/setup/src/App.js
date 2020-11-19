@@ -9,6 +9,9 @@ import CartContainer from './CartContainer'
 function App() {
   const { loading } = useGlobalContext()
 
+  const { cart } = useGlobalContext()
+  const [items, setItems] = useState(cart)
+
   const [count, setCount] = useState(0)
   if (loading) {
     return (
@@ -19,7 +22,7 @@ function App() {
   }
   return (
     <main>
-      <Navbar />
+      <Navbar items={items}/>
       <CartContainer />
     </main>
   )

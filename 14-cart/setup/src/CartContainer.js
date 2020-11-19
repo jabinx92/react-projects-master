@@ -5,15 +5,23 @@ import { useGlobalContext } from './context'
 const CartContainer = () => {
   const { cart } = useGlobalContext()
   const [items, setItems] = useState(cart)
+  const [cost, setCost] = useState(0);
+  
+  let amount = 0;
+  items.map(item=> {
+    return amount += item.amount
+  })
+  const [number, setNumber] = useState(amount)
+
   let total = 0;
   cart.map(item => {
    return total += item.price
   })
 
-  const [cost, setCost] = useState(0);
-  console.log(cart)
-  function removeItem (id) {
-    console.log('time to go')
+
+  function removeItem (id, count, price) {
+    console.log(`${count} * ${price} = ${count * -price}`)
+    setCost((count) * -price)
     const filtered = items.filter(item => {
       return item.id !== id
     })
@@ -56,7 +64,7 @@ const CartContainer = () => {
         </div>
         <button
           className='btn clear-btn'
-          onClick={() => console.log('clear cart')}
+          onClick={() => setItems([])}
         >
           clear cart
         </button>

@@ -1,7 +1,19 @@
 import React, { useState } from 'react'
 import { useGlobalContext } from './context'
+
+
+
 const Navbar = () => {
-  const { amount } = useGlobalContext()
+  const { cart } = useGlobalContext()
+  const [items, setItems] = useState(cart)
+
+  console.log(items)
+  let number = 0;
+  items.map(item=> {
+    return number += item.amount
+  })
+
+  const [amount, setAmount] = useState(number)
   return (
     <nav>
       <div className='nav-center'>

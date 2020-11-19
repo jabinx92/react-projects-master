@@ -6,11 +6,14 @@ import About from './pages/About'
 import SingleCocktail from './pages/SingleCocktail'
 import Error from './pages/Error'
 // import components
-import Navbar from './components/Navbar'
+import Navigationbar from './components/Navigationbar'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 function App() {
   return (
     <div>
-      <h2>app component</h2>
+      <Navigationbar/>
     </div>
   )
 }
