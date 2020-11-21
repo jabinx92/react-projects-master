@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import CocktailList from '../components/CocktailList'
 import SearchForm from '../components/SearchForm'
+import Loading from '../components/Loading'
+import EcommercePage from '../components/EcommercePage'
+
+import {  MDBRow } from "mdbreact";
 
 const Home = () => {
   const [error, setError] = useState(null);
@@ -16,7 +20,7 @@ const Home = () => {
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result);
+          setItems(result.drinks);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -31,16 +35,23 @@ const Home = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div><Loading/></div>;
   } else {
     return (
+      <>
+      <SearchForm/>
+      <div>
+      <EcommercePage/>
+      </div>
       <ul>
         {items.map(item => (
-          <li key={item.id}>
-            {item.name} {item.price}
+          <li key={item.idDrink}>
+            {console.log(item)}
+            <CocktailList key={item.idDrink} {...item}/>
           </li>
         ))}
       </ul>
+      </>
     );
   }
 }
