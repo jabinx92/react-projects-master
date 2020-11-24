@@ -4,7 +4,7 @@ import {  MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBBadge } from "m
 const CocktailList = ({strDrink, strGlass, strAlcoholic, strDrinkThumb}) => {
   return (
     <section className="text-center my-5">
-      <MDBRow>
+      {/* <MDBRow> */}
         <MDBCol lg="3" md="6" className="mb-lg-0 mb-4">
           <MDBCard className="align-items-center">
             <MDBCardImage
@@ -31,7 +31,7 @@ const CocktailList = ({strDrink, strGlass, strAlcoholic, strDrinkThumb}) => {
             <button onClick={() => {console.log(`you clicked on ${strDrink}`)}}>Details</button>
           </MDBCard>
         </MDBCol>
-        <MDBCol lg="3" md="6" className="mb-lg-0 mb-4">
+        {/* <MDBCol lg="3" md="6" className="mb-lg-0 mb-4">
           <MDBCard className="align-items-center">
             <MDBCardImage
               src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg"
@@ -108,8 +108,8 @@ const CocktailList = ({strDrink, strGlass, strAlcoholic, strDrinkThumb}) => {
               </h4>
             </MDBCardBody>
           </MDBCard>
-        </MDBCol>
-      </MDBRow>
+        </MDBCol> */}
+      {/* </MDBRow> */}
     </section>
   );
 }

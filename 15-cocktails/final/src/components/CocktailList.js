@@ -2,6 +2,7 @@ import React from 'react'
 import Cocktail from './Cocktail'
 import Loading from './Loading'
 import { useGlobalContext } from '../context'
+import {  MDBRow,MDBContainer } from "mdbreact";
 
 export default function CocktailList() {
   const { cocktails, loading } = useGlobalContext()
@@ -19,9 +20,14 @@ export default function CocktailList() {
     <section className='section'>
       <h2 className='section-title'>cocktails</h2>
       <div className='cocktails-center'>
+        <MDBContainer>
+
+        <MDBRow>
         {cocktails.map((item) => {
           return <Cocktail key={item.id} {...item} />
         })}
+        </MDBRow>
+        </MDBContainer>
       </div>
     </section>
   )
