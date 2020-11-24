@@ -3,9 +3,6 @@ import CocktailList from '../components/CocktailList'
 import SearchForm from '../components/SearchForm'
 import Loading from '../components/Loading'
 import EcommercePage from '../components/EcommercePage'
-
-import {  MDBRow } from "mdbreact";
-
 const Home = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,12 +41,10 @@ const Home = () => {
       <EcommercePage/>
       </div>
       <ul>
-        {items.map(item => (
-          <li key={item.idDrink}>
-            {console.log(item)}
+        <CocktailList items={items} />
+        {/* {items.map(item => (
             <CocktailList key={item.idDrink} {...item}/>
-          </li>
-        ))}
+        ))} */}
       </ul>
       </>
     );
