@@ -8,10 +8,10 @@ const CocktailList = (
     return (
       <section className="text-center my-5">
         <MDBRow>
-          {
+          { items ?
             items.map(item => {
               return (
-                <MDBCol lg="3" md="6" className="mb-lg-0 mb-4">
+                <MDBCol lg="3" md="6" className="mb-lg-0 mb-4" key={item.idDrink}>
                   <MDBCard className="align-items-center">
                     <MDBCardImage
                     src={item.strDrinkThumb}
@@ -38,7 +38,7 @@ const CocktailList = (
                   </MDBCard>
                 </MDBCol>
               )
-            })
+            }) : <div> Nothing to see </div>
           }
         </MDBRow>
       </section>

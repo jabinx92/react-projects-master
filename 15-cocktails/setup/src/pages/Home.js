@@ -7,12 +7,18 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [letter, setLetter] = useState("")
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+  function changeLetter(event) {
+    return setLetter(event)
+  }
+
+  console.log(letter)
+ 
+  const link = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${letter}`
   useEffect(() => {
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
+    console.log(link)
+    fetch(link)
       .then(res => res.json())
       .then(
         (result) => {
@@ -27,7 +33,7 @@ const Home = () => {
           setError(error);
         }
       )
-  }, [])
+  }, [link])
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -36,15 +42,12 @@ const Home = () => {
   } else {
     return (
       <>
-      <SearchForm/>
+      <SearchForm changeLetter={changeLetter}/>
       <div>
       <EcommercePage/>
       </div>
       <ul>
         <CocktailList items={items} />
-        {/* {items.map(item => (
-            <CocktailList key={item.idDrink} {...item}/>
-        ))} */}
       </ul>
       </>
     );
