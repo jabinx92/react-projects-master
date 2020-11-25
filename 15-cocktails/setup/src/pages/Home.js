@@ -47,7 +47,7 @@ const Home = () => {
       <EcommercePage/>
       </div>
       <ul>
-        <CocktailList items={items} />
+        {items ? <CocktailList items={items}/> : <div>Nothing to show</div>}
       </ul>
       </>
     );
