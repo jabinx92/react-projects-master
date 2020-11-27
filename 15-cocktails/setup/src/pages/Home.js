@@ -10,15 +10,14 @@ const Home = () => {
   const [letter, setLetter] = useState("")
 
   function changeLetter(event) {
-    return setLetter(event)
+    
+    setLetter(event)
   }
 
   console.log(letter)
  
-  const link = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${letter}`
   useEffect(() => {
-    console.log(link)
-    fetch(link)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${letter}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -33,11 +32,11 @@ const Home = () => {
           setError(error);
         }
       )
-  }, [link])
+  }, [letter])
 
   if (error) {
     return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
+  } else if (isLoaded === false) {
     return <div><Loading/></div>;
   } else {
     return (

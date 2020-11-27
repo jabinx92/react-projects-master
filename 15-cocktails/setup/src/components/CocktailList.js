@@ -1,10 +1,12 @@
 import React from "react";
 import {  MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBBadge } from "mdbreact";
 
-const CocktailList = (
-  {items}
-  // {strDrink, strGlass, strAlcoholic, strDrinkThumb, idDrink}
-  ) => {
+const CocktailList = ({items}) => {
+
+  function moreInfo(drink) {
+    console.log(`you clicked on ${drink}`)
+  }
+
     return (
       <section className="text-center my-5">
         <MDBRow>
@@ -34,7 +36,7 @@ const CocktailList = (
                       <strong>{item.strAlcoholic}</strong>
                     </h4>
                     </MDBCardBody>
-                    <button onClick={() => {console.log(`you clicked on ${item.strDrink}`)}}>Details</button>
+                    <button onClick={() => {moreInfo(item.strDrink)}}>Details</button>
                   </MDBCard>
                 </MDBCol>
               )
