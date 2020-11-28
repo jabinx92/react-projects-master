@@ -13,8 +13,6 @@ const Home = () => {
     
     setLetter(event)
   }
-
-  console.log(letter)
  
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${letter}`)

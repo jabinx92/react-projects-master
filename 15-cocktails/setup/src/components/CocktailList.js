@@ -1,11 +1,22 @@
 import React from "react";
 import {  MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBBadge } from "mdbreact";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory
+} from "react-router-dom";
+import Cocktail from './Cocktail'
 
 const CocktailList = ({items}) => {
 
-  function moreInfo(drink) {
-    console.log(`you clicked on ${drink}`)
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/cocktail");
   }
+
 
     return (
       <section className="text-center my-5">
@@ -36,8 +47,22 @@ const CocktailList = ({items}) => {
                       <strong>{item.strAlcoholic}</strong>
                     </h4>
                     </MDBCardBody>
-                    <button onClick={() => {moreInfo(item.strDrink)}}>Details</button>
-                  </MDBCard>
+                    <Router>
+                    <ul>
+                      <li>
+                        <Link to='/cocktail'>Details</Link>
+                      </li>
+                    </ul>
+                    <Switch>
+                        <Route path="/cocktail">
+                          <Cocktail items={items}/>
+                        </Route>
+                      </Switch>
+                    </Router>
+                    <button type="button" onClick={handleClick}>
+                      Go Cocktail component
+                    </button>
+                    </MDBCard>
                 </MDBCol>
               )
             })
