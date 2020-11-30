@@ -25,19 +25,23 @@ function App() {
       )
       } else {
       return (
-        <div>
           <Router>
           <Navigationbar/>
           <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
               <Route path="/about">
                 <About />
               </Route>
-              <Route path="/">
-                <Home />
+              <Route path="/cocktail/:id">
+                <SingleCocktail />
+              </Route>
+              <Route path="*">
+                <Error />
               </Route>
             </Switch>
           </Router>
-        </div>
       )
     }
 }

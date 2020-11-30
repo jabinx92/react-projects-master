@@ -7,16 +7,9 @@ import {
   Link,
   useHistory
 } from "react-router-dom";
-import Cocktail from './Cocktail'
+import SingleCocktail from "../pages/SingleCocktail";
 
 const CocktailList = ({items}) => {
-
-  let history = useHistory();
-
-  function handleClick() {
-    history.push("/cocktail");
-  }
-
 
     return (
       <section className="text-center my-5">
@@ -50,18 +43,10 @@ const CocktailList = ({items}) => {
                     <Router>
                     <ul>
                       <li>
-                        <Link to='/cocktail'>Details</Link>
+                        <Link to={`/cocktail/${item.idDrink}`} className="btn btn-primary btn-details">Details</Link>
                       </li>
                     </ul>
-                    <Switch>
-                        <Route path="/cocktail">
-                          <Cocktail items={items}/>
-                        </Route>
-                      </Switch>
                     </Router>
-                    <button type="button" onClick={handleClick}>
-                      Go Cocktail component
-                    </button>
                     </MDBCard>
                 </MDBCol>
               )
